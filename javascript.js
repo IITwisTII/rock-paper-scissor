@@ -8,7 +8,7 @@ function getComputerChoice() {
     } else if (randomnum > 1/3 && randomnum <= 2/3) {
         computerchoice = "paper"
     } else if (randomnum > 2/3) {
-        computerchoice = "scissors"
+        computerchoice = "scissor"
     }
     return computerchoice;
 }
@@ -17,7 +17,7 @@ function getHumanChoice() {
     humanchoice = prompt("humanchoice:")
     humanchoice = humanchoice.toLowerCase()
     if (humanchoice == "rock" || humanchoice == "scissor" || humanchoice == "paper") {
-        humanchoice == humanchoice
+        humanchoice = humanchoice
     } else {
         return console.error("Invalid humanchoice");
     }
@@ -27,8 +27,8 @@ function getHumanChoice() {
 function playRound(humanchoice, computerchoice) {
     if (humanchoice == computerchoice) {
         console.log("Draw")
-        humanscore == humanscore;
-        computerscore == computerscore;
+        humanscore = humanscore;
+        computerscore = computerscore;
     } else if (humanchoice == "rock" && computerchoice == "scissor") {
         console.log("You win")
         humanscore++;
@@ -55,7 +55,7 @@ function playGame() {
     computerscore = 0;
 
     for (let round = 0; round < 5; round++) {
-        console.log(`Round ${i + 1}:`);
+        console.log(`Round ${round + 1}:`);
         const computerSelection = getComputerChoice();
         const humanSelection = getHumanChoice();
 

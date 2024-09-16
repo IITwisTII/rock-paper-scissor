@@ -48,10 +48,24 @@ function playRound(humanchoice, computerchoice) {
     }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+function playGame() {
+    for (let round = 0; round < 5; round++) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
+        playRound(humanSelection, computerSelection);
+    }
+    
+    if (humanscore > computerscore) {
+        console.log("You win")
+    } else if (humanscore < computerscore) {
+        console.log("You lose")
+    }
+}
 
-console.log(humanscore, computerscore)
+playGame();
+
+
+
+
 

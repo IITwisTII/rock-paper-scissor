@@ -25,16 +25,33 @@ function getHumanChoice() {
 }
 
 function playRound(humanchoice, computerchoice) {
-    //Check if Draw
-    //Chech if one value is rock and the other is scissor and declare the value with rock the winner
-    if (humanchoice == "rock" && computerchoice == "scissor") {
+    if (humanchoice == computerchoice) {
+        console.log("Draw")
+    }  else if (humanchoice == "rock" && computerchoice == "scissor") {
         console.log("You win")
         humanscore += 1;
+    } else if (humanchoice == "paper" && computerchoice == "rock") {
+        console.log("You win")
+        humanscore += 1;
+    } else if (humanchoice == "scissor" && computerchoice == "paper") {
+        console.log("You win")
+        humanscore += 1;
+    } else if (computerchoice == "rock" && humanchoice == "scissor") {
+        console.log("You lose")
+        computerscore += 1;
+    } else if (computerchoice == "paper" && humanchoice == "rock") {
+        console.log("You lose")
+        computerscore += 1;
+    } else if (computerchoice == "scissor" && humanchoice == "paper") {
+        console.log("You lose")
+        computerscore += 1;
     }
-    //Rock > Scissor
-    //Scissor > Paper
-    //Paper > Rock
 }
 
-console.log(getHumanChoice())
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
+
+console.log(humanscore, computerscore)
 

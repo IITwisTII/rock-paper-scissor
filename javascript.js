@@ -13,17 +13,6 @@ function getComputerChoice() {
     return computerchoice;
 }
 
-function getHumanChoice() {
-    humanchoice = prompt("humanchoice:")
-    humanchoice = humanchoice.toLowerCase()
-    if (humanchoice == "rock" || humanchoice == "scissor" || humanchoice == "paper") {
-        humanchoice = humanchoice
-    } else {
-        return console.error("Invalid humanchoice");
-    }
-    return humanchoice.toLowerCase();
-}
-
 function playRound(humanchoice, computerchoice) {
     if (humanchoice == computerchoice) {
         console.log("Draw")
@@ -50,29 +39,28 @@ function playRound(humanchoice, computerchoice) {
     }
 }
 
-function playGame() {
-    humanscore = 0;
-    computerscore = 0;
+let playerchoice = document.querySelector("#playerchoice");
 
-    for (let round = 0; round < 5; round++) {
-        console.log(`Round ${round + 1}:`);
-        const computerSelection = getComputerChoice();
-        const humanSelection = getHumanChoice();
-
-        playRound(humanSelection, computerSelection);
+playerchoice.addEventListener('click', (event) => {
+    let target = event.target
+    const computerchoice = getComputerChoice()
+    humanchoice = target.id
+    console.log(`You chose ${humanchoice} and the computer chose ${computerchoice}`);
+    playRound(humanchoice, computerchoice)
+    console.log("Your score:", humanscore)
+    console.log("Computer score:", computerscore)
+    if (humanscore == 5 || computerscore == 5) {
+        if (humanscore > computerscore) {
+            console.log("You win the game")
+        } else if (humanscore < computerscore) {
+            console.log("You lose the game")
+        }
+        humanscore = 0;
+        computerscore = 0;
     }
     
-    console.log("Your score: ", humanscore)
-    console.log("Computer Score: ", computerscore)
+})
 
-    if (humanscore > computerscore) {
-        console.log("You win the game")
-    } else if (humanscore < computerscore) {
-        console.log("You lose the game")
-    }
-}
-
-playGame();
 
 
 

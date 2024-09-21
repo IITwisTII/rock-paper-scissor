@@ -13,33 +13,44 @@ function getComputerChoice() {
     return computerchoice;
 }
 
+
+
 function playRound(humanchoice, computerchoice) {
+    const roundresult = document.querySelector("#roundresult");
+    roundresult.style.color = "blue";
+
     if (humanchoice == computerchoice) {
-        console.log("Draw")
+        roundresult.textContent ="Draw";
         humanscore = humanscore;
         computerscore = computerscore;
     } else if (humanchoice == "rock" && computerchoice == "scissor") {
-        console.log("You win")
+        roundresult.textContent = "You win";
         humanscore++;
     } else if (humanchoice == "paper" && computerchoice == "rock") {
-        console.log("You win")
+        roundresult.textContent = "You win";
         humanscore++;
     } else if (humanchoice == "scissor" && computerchoice == "paper") {
-        console.log("You win")
+        roundresult.textContent = "You win";
         humanscore++;
     } else if (computerchoice == "rock" && humanchoice == "scissor") {
-        console.log("You lose")
+        roundresult.textContent = "You lose";
         computerscore++;
     } else if (computerchoice == "paper" && humanchoice == "rock") {
-        console.log("You lose")
+        roundresult.textContent = "You lose";
         computerscore++;
     } else if (computerchoice == "scissor" && humanchoice == "paper") {
-        console.log("You lose")
+        roundresult.textContent = "You lose";
         computerscore++;
     }
 }
 
 let playerchoice = document.querySelector("#playerchoice");
+
+const DOMhumanscore = document.querySelector("#humanscore");
+
+const DOMcomputerscore = document.querySelector("#computerscore");
+
+const winner = document.querySelector("#winner");
 
 playerchoice.addEventListener('click', (event) => {
     let target = event.target
@@ -47,18 +58,19 @@ playerchoice.addEventListener('click', (event) => {
     humanchoice = target.id
     console.log(`You chose ${humanchoice} and the computer chose ${computerchoice}`);
     playRound(humanchoice, computerchoice)
-    console.log("Your score:", humanscore)
-    console.log("Computer score:", computerscore)
+    DOMhumanscore.textContent = `Your score: ${humanscore}`;
+    DOMcomputerscore.textContent = `Computer score: ${computerscore}`;
     if (humanscore == 5 || computerscore == 5) {
         if (humanscore > computerscore) {
-            console.log("You win the game")
+            winner.textContent = "You";
+            winner.style.color = "green";
         } else if (humanscore < computerscore) {
-            console.log("You lose the game")
+            winner.textContent = "Computer";
+            winner.style.color = "red";
         }
         humanscore = 0;
         computerscore = 0;
     }
-    
 })
 
 
